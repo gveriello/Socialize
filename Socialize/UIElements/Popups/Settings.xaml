@@ -1,0 +1,273 @@
+﻿<UserControl
+    x:Class="UnifyMe.UIElements.Popups.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas/xceed.com/wpf/xaml/toolkit"
+    xmlns:controls="clr-namespace:UnifyMe.UIElements.Controls"
+    mc:Ignorable="d"
+    FontFamily="Segoe UI">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="grdMain" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <GroupItem x:Name="pvtServices" Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="SERVIZI" 
+                                   TextWrapping="WrapWithOverflow"
+                               Margin="0,20,0,10"
+                               Grid.Row="0"
+                               FontSize="30"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="3"/>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image Source="/Assets/Whatsapp.png" Grid.Row="0" Width="30" Height="30" />
+                        <CheckBox IsChecked="{Binding Path=WhatsappActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" HorizontalAlignment="Right" />
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image Source="/Assets/Telegram.png" Grid.Row="0" Width="30" Height="30" />
+                        <CheckBox IsChecked="{Binding Path=TelegramActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" HorizontalAlignment="Right" />
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image Source="/Assets/Slack.png" Grid.Row="0" Width="30" Height="30" />
+                        <CheckBox IsChecked="{Binding Path=SlackActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" HorizontalAlignment="Right" />
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image Source="/Assets/Skype.png" Grid.Row="0" Width="30" Height="30" />
+                        <CheckBox IsChecked="{Binding Path=SkypeActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" HorizontalAlignment="Right" />
+                    </Grid>
+                </Grid>
+            </GroupItem>
+            <GroupItem x:Name="pvtSettings" Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="NOTIFICHE" 
+                               TextWrapping="WrapWithOverflow"
+                               Margin="0,20,0,0"
+                               Grid.Row="0"
+                               FontSize="30"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="3"/>
+                    <ToggleButton Margin="5,10,5,0" 
+                                  x:Name="optionShowNotifyOnMessage" 
+                                  Grid.Column="0" 
+                                  MinHeight="20"
+                                  MaxHeight="40"
+                                  Grid.Row="1"
+                                  IsChecked="{Binding Path=NotAllowNotify, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBlock
+                            Text="Disabilita la ricezione delle notifiche"
+                            TextWrapping="WrapWithOverflow" />
+                    </ToggleButton>
+                    <ToggleButton Margin="5,10,5,0" 
+                                  x:Name="optionUpdateNumMessages" 
+                                  Grid.Column="1" 
+                                  MinHeight="20"
+                                  MaxHeight="40"
+                                  Grid.Row="1"
+                                  IsChecked="{Binding Path=NotUpdateNumMessages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBlock
+                            Text="Non aggiornare il numero di msg"
+                            TextWrapping="WrapWithOverflow" />
+                    </ToggleButton>
+                    <TextBlock Text="PERSONALIZZAZIONE" 
+                               Margin="0,20,0,0"
+                               Grid.Row="2"
+                               FontSize="30"
+                               TextWrapping="WrapWithOverflow"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="3"/>
+                    <ToggleButton Margin="5,10,5,0" 
+                                  x:Name="optionHideTopBar" 
+                                  Grid.Column="0" 
+                                  Grid.Row="3"
+                                  MinHeight="20"
+                                  MaxHeight="40"
+                                  IsChecked="{Binding Path=HideTopBar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBlock
+                            Text="Nascondi la barra del titolo" 
+                            TextWrapping="WrapWithOverflow" />
+                    </ToggleButton>
+                    <ToggleButton Margin="5,10,5,0" 
+                                  x:Name="optionLaunchFullScreen" 
+                                  Grid.Column="1" 
+                                  MinHeight="20"
+                                  MaxHeight="40"
+                                  Grid.Row="3"
+                                  IsChecked="{Binding Path=LaunchFullScreen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBlock
+                            Text="Avvia UnifyMe a schermo intero"
+                            TextWrapping="WrapWithOverflow" />
+                    </ToggleButton>
+                    <Grid Grid.Row="4" Grid.Column="0" Margin="5,5,5,0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Colore dell' app" 
+                                   TextWrapping="WrapWithOverflow"
+                               Margin="0,20,0,0"
+                               Grid.Row="0"
+                               FontSize="20"/>
+                        <controls:ColorPicker 
+                               Grid.Row="1"
+                            Height="30" 
+                            ColorSelected="{Binding Path=ApplicationBackground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="1" Margin="5,5,5,0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Colore del testo" 
+                                   TextWrapping="WrapWithOverflow"
+                               Margin="0,20,0,0"
+                               Grid.Row="0"
+                               FontSize="20"/>
+                        <controls:ColorPicker 
+                               Grid.Row="1"
+                            Height="30" 
+                            ColorSelected="{Binding Path=FontColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="2" Margin="5,5,5,0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Colore dei servizi attivi" 
+                                   TextWrapping="WrapWithOverflow"
+                               Margin="0,20,0,0"
+                               Grid.Row="0"
+                               FontSize="20"/>
+                        <controls:ColorPicker 
+                               Grid.Row="1"
+                            Height="30" 
+                            ColorSelected="{Binding Path=ServiceBackgroundActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    <TextBlock Text="UNIFYME" 
+                                   TextWrapping="WrapWithOverflow"
+                               Margin="0,20,0,0"
+                               Grid.Row="5"
+                               FontSize="30"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="3"/>
+                    <TextBlock Text="Versione: " 
+                               Margin="0,10,0,0"
+                               Grid.Row="6"
+                                   TextWrapping="WrapWithOverflow"
+                               FontSize="20"
+                               Grid.Column="0" />
+                    <TextBlock Text="{Binding Path=Version, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                   TextWrapping="WrapWithOverflow"
+                               Margin="0,10,0,0"
+                               Grid.Row="6"
+                               FontSize="20"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+                    <TextBlock Text="Ultimo aggiornamento: " 
+                                   TextWrapping="WrapWithOverflow"
+                               Margin="0,10,0,0"
+                               Grid.Row="7"
+                               FontSize="20"
+                               Grid.Column="0" />
+                    <TextBlock Text="{Binding Path=LastUpdated, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                   TextWrapping="WrapWithOverflow"
+                               Margin="0,10,0,0"
+                               Grid.Row="7"
+                               FontSize="20"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"/>
+                    <ToggleButton Margin="5,10,5,0" 
+                                  x:Name="optionAllowAutoUpdate" 
+                                  MinHeight="20"
+                                  MaxHeight="40"
+                                  Grid.Column="0" 
+                                  Grid.Row="8"
+                                  IsChecked="{Binding Path=AllowUpdateNotify, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBlock Text="Avvisami dei nuovi update"
+                                   TextWrapping="WrapWithOverflow" />
+                    </ToggleButton>
+                    <ToggleButton Margin="5,10,5,0" 
+                                  x:Name="optionClearSettings" 
+                                  MinHeight="20"
+                                  MaxHeight="40"
+                                  Grid.Column="1" 
+                                  Grid.Row="8"
+                                  IsChecked="{Binding Path=ClearSettings, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBlock Text="Ripristina impostazioni iniziali"
+                                   TextWrapping="WrapWithOverflow" />
+                    </ToggleButton>
+                    <ToggleButton Margin="5,10,5,0" 
+                                  x:Name="optionShowOnWindowsStartup" 
+                                  MinHeight="20"
+                                  MaxHeight="40"
+                                  Grid.Column="2" 
+                                  Grid.Row="8"
+                                  IsChecked="{Binding Path=ShowOnWindowsStartup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                        <TextBlock Text="Avvia UnifyMe all' avvio di Windows"
+                                   TextWrapping="WrapWithOverflow" />
+                    </ToggleButton>
+                </Grid>
+            </GroupItem>
+            <TextBlock Text="Alcune impostazioni vengono rese effettive dopo il riavvio dei servizi o di UnifyMe." 
+                Margin="0,10,0,0"
+                TextWrapping="WrapWithOverflow"
+                Grid.Row="2"
+                FontStyle="Italic"
+                Grid.Column="0"
+                Grid.ColumnSpan="3" />
+        </Grid>
+    </ScrollViewer>
+</UserControl>
