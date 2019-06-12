@@ -57,9 +57,11 @@ namespace UnifyMe.UIElements.Services
 
         private void StartService()
         {
+            this.ucWebView = new ChromiumWebBrowser()
+            {
+                Address = "https://slack.com/signin"
+            };
             this.tbMessage.Visibility = Visibility.Visible;
-            this.ucWebView = new ChromiumWebBrowser();
-            this.ucWebView.Address = "https://slack.com/signin";
             this.ucWebView.Loaded += this.UcWebView_Loaded;
             this.ucWebView.TitleChanged += this.UcWebView_TitleChanged;
 

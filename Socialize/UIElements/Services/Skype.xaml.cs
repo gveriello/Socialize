@@ -62,9 +62,13 @@ namespace UnifyMe.UIElements.Services
 
         private void StartService()
         {
+            this.ucWebView = new ChromiumWebBrowser()
+            {
+                Address = "https://web.skype.com/"
+            };
             this.tbMessage.Visibility = Visibility.Visible;
-            this.ucWebView.Loaded += this.UcWebView_Loaded;
             this.ucWebView.Address = "https://web.skype.com/";
+            this.ucWebView.Loaded += this.UcWebView_Loaded;
             this.ucWebView.TitleChanged += this.UcWebView_TitleChanged;
 
             if (!this.grdBrowser.Children.Contains(this.ucWebView))
