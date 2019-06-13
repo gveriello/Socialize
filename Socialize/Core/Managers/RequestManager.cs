@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Xml;
 using System.Xml.Linq;
 using UnifyMe.Core.Classes;
-using UnifyMe.Core.Helper;
 
 namespace UnifyMe.Core.Managers
 {
