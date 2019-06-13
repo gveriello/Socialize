@@ -5,19 +5,8 @@ using UnifyMe.Core.Managers;
 
 namespace UnifyMe.Core.Models
 {
-    public class SettingsModel : INotifyPropertyChanged
+    public class SettingsModel : Model
     {
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
 
         private bool _minimizeOnClose;
         private bool _NotAllowNotify;

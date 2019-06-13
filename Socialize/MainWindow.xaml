@@ -6,7 +6,9 @@
         mc:Ignorable="d"
         Title="UnifyMe"
         MinWidth="1000"
-        MinHeight="760">
+        MinHeight="760"
+        MaxWidth="1030"
+        MaxHeight="800">
     <Grid x:Name="grdMain">
         <!--<wpf:ChromiumWebBrowser
             x:Name="Browser"

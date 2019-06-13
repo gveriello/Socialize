@@ -2,7 +2,7 @@
 
 namespace UnifyMe.Core.Models
 {
-    public class ServicesContext : INotifyPropertyChanged
+    public class ServicesContext: Model
     {
         #region Private property
         private string _whatsappNotify;
@@ -14,18 +14,7 @@ namespace UnifyMe.Core.Models
         private bool _skypeRun;
         private bool _slackRun;
         private bool _settingsRun;
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
+        private bool _dashboardRun;
         #endregion
 
         public string WhatsappNotify
@@ -107,6 +96,15 @@ namespace UnifyMe.Core.Models
             {
                 this._settingsRun = value;
                 this.OnPropertyChanged(nameof(this.SettingsRun));
+            }
+        }
+        public bool DashboardRun
+        {
+            get { return this._dashboardRun; }
+            set
+            {
+                this._dashboardRun = value;
+                this.OnPropertyChanged(nameof(this.DashboardRun));
             }
         }
 

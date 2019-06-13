@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using UnifyMe.Core.Classes;
 using UnifyMe.Core.Managers;
+using UnifyMe.Core.Models;
 using Windows.Devices.Geolocation;
 
 namespace UnifyMe.UIElements.Popups
@@ -16,13 +18,25 @@ namespace UnifyMe.UIElements.Popups
     public partial class Dashboard : UserControl
     {
         private static Dashboard Instance;
-        private static bool alrealyDownloaded;
-        Geolocator gl;
+        DashboardModel Model;
         public Dashboard()
         {
             InitializeComponent();
             Instance = this;
-            gl = new Geolocator();
+            this.Model = new DashboardModel();
+            this.DataContext = this.Model;
+            InitializeModel();
+            this.SizeChanged += this.Dashboard_SizeChanged;
+        }
+
+        private void Dashboard_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.grdNews.Height = this.Height - 50;
+        }
+
+        private void InitializeModel()
+        {
+            this.Model.GeolocatorObject = new Geolocator();
         }
 
         #region Run
@@ -56,56 +70,49 @@ namespace UnifyMe.UIElements.Popups
         {
             grdMain.Visibility = Visibility.Visible;
 
-            if (alrealyDownloaded)
+            if (this.Model.HasWeatherInfo.Value)
                 return;
 
-            Geoposition gp = await this.GetCurrentPosition();
-
-            if (gp != null)
-            {
-                ResponseWeather currentWheater = RequestManager.GetWheatherAsync(gp.Coordinate.Point.Position.Longitude, gp.Coordinate.Point.Position.Latitude);
-                tbMeteoAttuale.Visibility = Visibility.Collapsed;
-                if (currentWheater != null)
-                {
-                    alrealyDownloaded = true;
-                    this.DataContext = currentWheater;
-                    string description = currentWheater?.weather.Select(i => i.main).First();
-                    tbDescription.Text = description;
-                    tbMeteoAttuale.Visibility = Visibility.Visible;
-                    tbActualTemp.Text = $"{((int)(currentWheater.main.temp / 10))} °";
-                    //string country = currentWheater?.name;
-                }
-            }
-
-            tbMessage.Text = this.GetRandomWelcomeText();
-            tbMessage.Visibility = (gp == null) ? Visibility.Visible : Visibility.Collapsed;
-            tbMigliorEsperienzaUtente.Visibility = (gp == null) ? Visibility.Visible : Visibility.Collapsed;
+            await GetCurrentPosition();
+            InitializeWeather();
+            InitializeNews();
         }
 
-        private async Task<Geoposition> GetCurrentPosition()
+        private async Task GetCurrentPosition()
         {
-            try
-            {
-                Geoposition gp = await gl.GetGeopositionAsync();
-                return gp;
-            }
-            catch
-            {
-                return null;
-            }
+            this.Model.gp = await this.Model.GeolocatorObject.GetGeopositionAsync();
         }
 
-        private string GetRandomWelcomeText()
+        private void InitializeNews()
         {
-            IList<string> messages = new List<string>
-            {
-                "Ciao, cosa posso fare per te? 😋",
-                "Bella giornata oggi, vero? 🌞",
-                "Hey! I tuoi amici ti stanno aspettando 🍻"
-            };
-            Random random = new Random();
-            return messages.ElementAt(random.Next(0, messages.Count));
+            if (this.Model.CurrentWeather == null)
+                return;
+
+            pbLoadedWidget.Visibility = Visibility.Visible;
+
+            this.Model.NewsSource = RequestManager.GetNews(this.Model.CityName);
+
+            pbLoadedWidget.Visibility = Visibility.Collapsed;
+        }
+
+        private async void InitializeWeather()
+        {
+            if (Model.gp == null)
+                return;
+
+            pbLoadedWidget.Visibility = Visibility.Visible;
+            this.Model.CurrentWeather = null;
+            Model.CurrentWeather = RequestManager.GetWheather(Model.gp.Coordinate.Point.Position.Longitude, Model.gp.Coordinate.Point.Position.Latitude);
+            pbLoadedWidget.Visibility = Visibility.Collapsed;
         }
         #endregion
+
+        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Grid gridSender = (Grid)sender;
+            Process.Start(new ProcessStartInfo(gridSender.Tag.ToString()));
+        }
     }
+
+
 }

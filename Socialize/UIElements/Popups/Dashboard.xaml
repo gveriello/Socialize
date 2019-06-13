@@ -4,16 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UnifyMe.UIElements.Popups"
+             xmlns:converter="clr-namespace:UnifyMe.Core.Models.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" FontFamily="Segoe UI">
+    <UserControl.Resources>
+        <converter:VisibilityConverter x:Key="VisibilityConverter" />
+    </UserControl.Resources>
     <Grid Visibility="Visible" x:Name="grdMain">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid Margin="50" HorizontalAlignment="left" VerticalAlignment="Top" x:Name="grdWeather">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Margin="50" Grid.Column="0" Grid.Row="0" HorizontalAlignment="left" VerticalAlignment="Top" x:Name="grdWeather"
+                       Visibility="{Binding Path=HasWeatherInfo, Converter={StaticResource VisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -25,30 +36,70 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Text="Meteo attuale:" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" x:Name="tbMeteoAttuale" Visibility="Collapsed" FontSize="15" />
-                <Image Source="{Binding Path=logo, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" x:Name="imgWeather" Width="50" Height="50" />
-                <TextBlock Text="{Binding Path=name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.RowSpan="1" Margin="20,0,0,0" Grid.Row="1" Grid.Column="1" FontFamily="Segoe UI" FontSize="30" />
-                <TextBlock x:Name="tbActualTemp" HorizontalAlignment="Center" Grid.RowSpan="1" Margin="-5, -10, 0, 0" Grid.Row="2" Grid.Column="1" FontFamily="Segoe UI" FontSize="10" />
-                <TextBlock Margin="0, -10, 0, 0" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="10" x:Name="tbDescription" />
+                <TextBlock Grid.Row="0" Text="Meteo attuale:" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" x:Name="tbMeteoAttuale" FontSize="15" />
+                <Image Source="{Binding Path=IconWeather, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" x:Name="imgWeather" Width="50" Height="50" />
+                <TextBlock Text="{Binding Path=CityName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.RowSpan="1" Margin="20,0,0,0" Grid.Row="1" Grid.Column="1" FontFamily="Segoe UI" FontSize="30" />
+                <TextBlock x:Name="tbActualTemp" Text="{Binding Path=ActualTemp, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.RowSpan="1" Margin="-5, -10, 0, 0" Grid.Row="2" Grid.Column="1" FontFamily="Segoe UI" FontSize="10" />
+                <TextBlock Margin="0, -10, 0, 0" Text="{Binding Path=Description, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="10" x:Name="tbDescription" />
+            </Grid>
+            <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,50,50,50" 
+                       Visibility="{Binding Path=HasNews, Converter={StaticResource VisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Gli ultimi avvenimenti:" HorizontalAlignment="Left"  FontSize="15"  />
+                <Grid x:Name="grdNews"  Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="1" >
+                    <ListView Margin="10" Name="lvNews" ItemsSource="{Binding NewsSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <Grid MouseDown="Grid_MouseDown" Tag="{Binding Link}" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="{Binding ShortTitle}" ToolTip="{Binding Title}" Grid.Row="0" FontWeight="Bold" FontSize="20" />
+                                        <TextBlock Text="{Binding ShortDescription}" ToolTip="{Binding Description}" Grid.Row="1" FontWeight="Light" FontSize="15" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
             </Grid>
             <TextBlock x:Name="tbMessage" 
                        Grid.Row="1"
-                       Margin="0,0,0,10"
-                       HorizontalAlignment="Center" 
-                       VerticalAlignment="Center" 
+                       Grid.ColumnSpan="3"
+                       HorizontalAlignment="Center"
                        FontSize="30" 
                        FontStyle="Italic"
-                       Text="Ciao"
-                       FontFamily="Segoe UI" />
+                       Text="{Binding Path=WelcomeMessage}"
+                       FontFamily="Segoe UI"
+                       Visibility="{Binding Path=NotHasWeatherInfo, Converter={StaticResource VisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock x:Name="tbMigliorEsperienzaUtente" 
-                       Grid.Row="2"
-                       Margin="0,0,0,10"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       Margin="0,50,0,0"
                        HorizontalAlignment="Center" 
-                       VerticalAlignment="Center" 
                        FontSize="10" 
                        FontStyle="Italic"
                        Text="Per una migliore esperienza utente, abilitare la posizione."
+                       Visibility="{Binding Path=NotHasWeatherInfo, Converter={StaticResource VisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
                        FontFamily="Segoe UI" />
+            <ProgressBar x:Name="pbLoadedWidget"
+                         Grid.Row="1"
+                         Width="500"
+                         Height="20"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       Margin="0,0,0,0"
+                       HorizontalAlignment="Center"
+                       IsIndeterminate="True" />
+
         </Grid>
     </Grid>
 </UserControl>

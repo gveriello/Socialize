@@ -110,11 +110,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\Classes\ItemNews.cs" />
     <Compile Include="Core\Managers\RequestManager.cs" />
     <Compile Include="Core\Classes\ColorInfo.cs" />
     <Compile Include="Core\Classes\Wheater.cs" />
     <Compile Include="Core\Enums\EnumsManager.cs" />
     <Compile Include="Core\Events\EventsManager.cs" />
+    <Compile Include="Core\Models\Converter\VisibilityConverter.cs" />
+    <Compile Include="Core\Models\DashboardModel.cs" />
+    <Compile Include="Core\Models\Model.cs" />
     <Compile Include="UIElements\Controls\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>

@@ -128,6 +128,7 @@ namespace UnifyMe
             this.Model.SkypeRun = false;
             this.Model.SlackRun = false;
             this.Model.SettingsRun = false;
+            this.Model.DashboardRun = false;
         }
 
         private void CollapseAllServices()
