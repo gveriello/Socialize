@@ -16,20 +16,17 @@ namespace UnifyMe.Core.Classes
         {
             get
             {
-                if (Title.Length < 30)
+                if (Title.Length < 100)
                     return this.Title;
 
-                return $"{this.Description.Substring(0, 50)}...";
+                return $"{this.Description.Substring(0, 100)}...";
             }
         }
         public string ShortDescription
         {
             get
             {
-                if (Description.Length < 50)
-                    return this.Description;
-
-                return $"{this.Description.Substring(0, 50)}...";
+                return this.Description + " [doppio click per aprire]";
             }
         }
     }

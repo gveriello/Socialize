@@ -31,7 +31,7 @@ namespace UnifyMe.UIElements.Popups
 
         private void Dashboard_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            this.grdNews.Height = this.Height - 50;
+            //this.grdNews.Height = this.Height - 50;
         }
 
         private void InitializeModel()
@@ -107,9 +107,9 @@ namespace UnifyMe.UIElements.Popups
         }
         #endregion
 
-        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Expander_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Grid gridSender = (Grid)sender;
+            Expander gridSender = (Expander)sender;
             Process.Start(new ProcessStartInfo(gridSender.Tag.ToString()));
         }
     }

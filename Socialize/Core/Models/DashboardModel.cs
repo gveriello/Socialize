@@ -18,7 +18,7 @@ namespace UnifyMe.Core.Models
         private Geolocator _geolocatorObject;
         private string _welcomeMessage;
         private bool _hasWeatherInfo;
-        private bool? _notHasWheaterInfo;
+        private bool _notHasWheaterInfo;
         private bool? _notHasNews;
         private IList<ItemNews> _newsSource;
         private string _description;
@@ -83,14 +83,10 @@ namespace UnifyMe.Core.Models
             }
         }
 
-        public bool? NotHasWeatherInfo
+        public bool NotHasWeatherInfo
         {
-            get { return _notHasWheaterInfo; }
-            set
-            {
-                _notHasWheaterInfo = value;
-                OnPropertyChanged(nameof(NotHasWeatherInfo));
-            }
+            get { return !this.HasWeatherInfo.Value; }
+            set { OnPropertyChanged(nameof(NotHasWeatherInfo)); }
         }
 
 
