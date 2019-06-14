@@ -85,8 +85,8 @@ namespace UnifyMe.UIElements.Services
 
         private void CheckNotify()
         {
-            bool NotAllowNotify = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotAllowNotify");
-            bool NotUpdateNumMessages = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotUpdateNumMessages");
+            bool NotAllowNotify = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotAllowNotify");
+            bool NotUpdateNumMessages = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotUpdateNumMessages");
             
             string titleWebView = null;
             int nMsgToRead = 0;

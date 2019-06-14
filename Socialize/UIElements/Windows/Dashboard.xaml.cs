@@ -10,7 +10,7 @@ using UnifyMe.Core.Managers;
 using UnifyMe.Core.Models;
 using Windows.Devices.Geolocation;
 
-namespace UnifyMe.UIElements.Popups
+namespace UnifyMe.UIElements.Windows
 {
     /// <summary>
     /// Interaction logic for Dashboard.xaml

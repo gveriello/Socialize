@@ -13,7 +13,7 @@ namespace UnifyMe.Core.UserPreferences
         LaunchFullScreen
     }
 
-    public static class ManagePreferences
+    public static class PreferencesManager
     {
         private static RegistryKey localSettings;
 

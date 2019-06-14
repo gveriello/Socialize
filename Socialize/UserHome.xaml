@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:services="clr-namespace:UnifyMe.UIElements.Services"
-             xmlns:popups="clr-namespace:UnifyMe.UIElements.Popups"
+             xmlns:Windows="clr-namespace:UnifyMe.UIElements.Windows"
              mc:Ignorable="d" 
              >
     <Grid>
@@ -63,7 +63,7 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            <popups:Dashboard Grid.Column="1" x:Name="ppDashboard"/>
+            <Windows:Dashboard Grid.Column="1" x:Name="ppDashboard"/>
             <Grid Grid.Column="1" x:Name="grdUCs">
                 <services:Whatsapp
                     Grid.Column="1"
@@ -85,7 +85,7 @@
                     x:Name="ucSkype" 
                     Run="{Binding Path=SkypeRun, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                     NumNotifications="{Binding Path=SkypeNotify, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <popups:Settings
+                <Windows:Settings
                 Grid.Column="1"
                     x:Name="ucSettings"
                     Visibility="Collapsed"

@@ -110,22 +110,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\Classes\ItemNews.cs" />
+    <Compile Include="Core\Entities\ItemNews.cs" />
     <Compile Include="Core\Managers\RequestManager.cs" />
-    <Compile Include="Core\Classes\ColorInfo.cs" />
-    <Compile Include="Core\Classes\Wheater.cs" />
+    <Compile Include="Core\Entities\ColorInfo.cs" />
+    <Compile Include="Core\Entities\Wheater.cs" />
     <Compile Include="Core\Enums\EnumsManager.cs" />
-    <Compile Include="Core\Events\EventsManager.cs" />
-    <Compile Include="Core\Models\Converter\VisibilityConverter.cs" />
-    <Compile Include="Core\Models\DashboardModel.cs" />
-    <Compile Include="Core\Models\Model.cs" />
+    <Compile Include="Core\Managers\EventsManager.cs" />
+    <Compile Include="UIElements\Models\Converter\VisibilityConverter.cs" />
+    <Compile Include="UIElements\Models\DashboardModel.cs" />
+    <Compile Include="UIElements\Models\Model.cs" />
     <Compile Include="UIElements\Controls\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIElements\Popups\Dashboard.xaml.cs">
+    <Compile Include="UIElements\Windows\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIElements\Popups\Settings.xaml.cs">
+    <Compile Include="UIElements\Windows\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIElements\Services\Skype.xaml.cs">
@@ -152,11 +152,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Managers\AppManager.cs" />
-    <Compile Include="Core\Models\ServicesContext.cs" />
-    <Compile Include="Core\Models\SettingsModel.cs" />
-    <Compile Include="Core\Notification\Notificator.cs" />
+    <Compile Include="UIElements\Models\ServicesContext.cs" />
+    <Compile Include="UIElements\Models\SettingsModel.cs" />
+    <Compile Include="Core\Managers\NotificatorManager.cs" />
     <Compile Include="UIElements\Controls\MsgBox.cs" />
-    <Compile Include="Core\UserPreferences\ManagePreferences.cs" />
+    <Compile Include="Core\Managers\PreferencesManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -165,11 +165,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UIElements\Popups\Dashboard.xaml">
+    <Page Include="UIElements\Windows\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UIElements\Popups\Settings.xaml">
+    <Page Include="UIElements\Windows\Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

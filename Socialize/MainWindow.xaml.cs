@@ -57,10 +57,10 @@ namespace UnifyMe
 
         private void CheckUserPreferences()
         {
-            bool HideTopBar = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "HideTopBar");
-            bool LaunchFullScreen = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "LaunchFullScreen");
-            bool ShowOnWindowsStartup = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "ShowOnWindowsStartup");
-            ColorInfo ApplicationBackground = ManagePreferences.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ApplicationBackground", new ColorInfo(color_name: "GreenYellow", color: Colors.GreenYellow));
+            bool HideTopBar = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "HideTopBar");
+            bool LaunchFullScreen = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "LaunchFullScreen");
+            bool ShowOnWindowsStartup = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "ShowOnWindowsStartup");
+            ColorInfo ApplicationBackground = PreferencesManager.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ApplicationBackground", new ColorInfo(color_name: "GreenYellow", color: Colors.GreenYellow));
 
             if (LaunchFullScreen)
                 this.WindowState = WindowState.Maximized;

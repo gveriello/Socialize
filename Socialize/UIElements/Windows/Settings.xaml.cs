@@ -9,7 +9,7 @@ using UnifyMe.Core.Enums;
 using System.Windows.Media;
 using UnifyMe.Core.Classes;
 
-namespace UnifyMe.UIElements.Popups
+namespace UnifyMe.UIElements.Windows
 {
     public sealed partial class Settings : UserControl
     {
@@ -17,7 +17,7 @@ namespace UnifyMe.UIElements.Popups
         private SettingsModel Model;
         public Settings()
         {
-            this.Model = ManagePreferences.GetModel<SettingsModel>(nameof(SettingsModel));
+            this.Model = PreferencesManager.GetModel<SettingsModel>(nameof(SettingsModel));
             if (this.Model == null)
                 this.Model = new SettingsModel();
 
@@ -34,7 +34,7 @@ namespace UnifyMe.UIElements.Popups
                 ColorInfo tempForeGround = this.GetContrastForeground(this.Model.ApplicationBackground.Color);
                 this.Model.FontColor = tempForeGround;
             }
-            ManagePreferences.SaveModel<SettingsModel>(nameof(SettingsModel), this.Model);
+            PreferencesManager.SaveModel<SettingsModel>(nameof(SettingsModel), this.Model);
             EventsManager.Instance.Raise(EventsNameEnums.OnSettingsRefresh, EventArgs.Empty);
         }
 

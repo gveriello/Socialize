@@ -46,14 +46,14 @@ namespace UnifyMe
         }
         private void CheckUserPreferences()
         {
-            ColorInfo ApplicationBackground = ManagePreferences.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ApplicationBackground", new ColorInfo(color_name: null, color: Colors.GreenYellow));
-            ColorInfo ApplicationForeGround = ManagePreferences.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "FontColor", new ColorInfo(color_name: null, color: Colors.Black));
-            ColorInfo ServicesBackground = ManagePreferences.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ServiceBackgroundActive", new ColorInfo(color_name: null, color: Colors.White));
+            ColorInfo ApplicationBackground = PreferencesManager.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ApplicationBackground", new ColorInfo(color_name: null, color: Colors.GreenYellow));
+            ColorInfo ApplicationForeGround = PreferencesManager.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "FontColor", new ColorInfo(color_name: null, color: Colors.Black));
+            ColorInfo ServicesBackground = PreferencesManager.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ServiceBackgroundActive", new ColorInfo(color_name: null, color: Colors.White));
 
-            bool WhatsappActive = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "WhatsappActive");
-            bool TelegramActive = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "TelegramActive");
-            bool SkypeActive = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "SkypeActive");
-            bool SlackActive = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "SlackActive");
+            bool WhatsappActive = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "WhatsappActive");
+            bool TelegramActive = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "TelegramActive");
+            bool SkypeActive = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "SkypeActive");
+            bool SlackActive = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "SlackActive");
 
             this.Background = new SolidColorBrush(ApplicationBackground.Color);
             this.Foreground = new SolidColorBrush(ApplicationForeGround.Color);
@@ -142,8 +142,8 @@ namespace UnifyMe
 
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            ColorInfo ApplicationBackground = ManagePreferences.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ApplicationBackground", new ColorInfo(color_name: null, color: Colors.White));
-            ColorInfo ServiceBackground = ManagePreferences.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ServiceBackgroundActive", new ColorInfo(color_name: null, color: Colors.GreenYellow));
+            ColorInfo ApplicationBackground = PreferencesManager.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ApplicationBackground", new ColorInfo(color_name: null, color: Colors.White));
+            ColorInfo ServiceBackground = PreferencesManager.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ServiceBackgroundActive", new ColorInfo(color_name: null, color: Colors.GreenYellow));
             bool newValue = false;
 
             if (e.PropertyName == nameof(this.Model.SkypeRun))

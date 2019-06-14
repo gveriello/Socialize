@@ -109,8 +109,8 @@ namespace UnifyMe.UIElements.Services
             //});
 
 
-            bool NotAllowNotify = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotAllowNotify");
-            bool NotUpdateNumMessages = ManagePreferences.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotUpdateNumMessages");
+            bool NotAllowNotify = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotAllowNotify");
+            bool NotUpdateNumMessages = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotUpdateNumMessages");
 
             if (NotUpdateNumMessages && NotAllowNotify)
                 return;
