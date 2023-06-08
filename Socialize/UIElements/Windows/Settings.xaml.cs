@@ -1,13 +1,13 @@
-﻿using UnifyMe.Core.Models;
-using UnifyMe.Core.UserPreferences;
+﻿using System;
 using System.ComponentModel;
-using System.Windows.Controls;
 using System.Windows;
-using UnifyMe.Core.Events;
-using System;
-using UnifyMe.Core.Enums;
+using System.Windows.Controls;
 using System.Windows.Media;
 using UnifyMe.Core.Classes;
+using UnifyMe.Core.Enums;
+using UnifyMe.Core.Events;
+using UnifyMe.Core.Models;
+using UnifyMe.Core.UserPreferences;
 
 namespace UnifyMe.UIElements.Windows
 {
@@ -86,5 +86,5 @@ namespace UnifyMe.UIElements.Windows
         }
         #endregion
     }
-    
+
 }

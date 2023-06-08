@@ -1,12 +1,10 @@
 ﻿using CefSharp.Wpf;
+using System.Windows;
+using System.Windows.Controls;
 using UnifyMe.Core.Enums;
 using UnifyMe.Core.Models;
 using UnifyMe.Core.UserPreferences;
 using UnifyMe.Notification;
-using System.Windows;
-using System.Windows.Controls;
-
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace UnifyMe.UIElements.Services
 {
@@ -66,7 +64,7 @@ namespace UnifyMe.UIElements.Services
             {
                 Address = "https://web.skype.com/"
             };
-            this.tbMessage.Visibility = Visibility.Visible;
+            this.tbMessage.Visibility = System.Windows.Visibility.Visible;
             this.ucWebView.Address = "https://web.skype.com/";
             this.ucWebView.Loaded += this.UcWebView_Loaded;
             this.ucWebView.TitleChanged += this.UcWebView_TitleChanged;
@@ -74,7 +72,7 @@ namespace UnifyMe.UIElements.Services
             if (!this.grdBrowser.Children.Contains(this.ucWebView))
                 this.grdBrowser.Children.Add(this.ucWebView);
 
-            this.ucWebView.Visibility = Visibility.Visible;
+            this.ucWebView.Visibility = System.Windows.Visibility.Visible;
             this.CheckNotify();
         }
 
@@ -87,7 +85,7 @@ namespace UnifyMe.UIElements.Services
         {
             bool NotAllowNotify = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotAllowNotify");
             bool NotUpdateNumMessages = PreferencesManager.GetPropertyFromModel<SettingsModel, bool>(nameof(SettingsModel), "NotUpdateNumMessages");
-            
+
             string titleWebView = null;
             int nMsgToRead = 0;
 
@@ -123,13 +121,13 @@ namespace UnifyMe.UIElements.Services
 
         private void UcWebView_Loaded(object sender, RoutedEventArgs e)
         {
-            this.tbMessage.Visibility = Visibility.Collapsed;
-            this.grdBrowser.Visibility = Visibility.Visible;
+            this.tbMessage.Visibility = System.Windows.Visibility.Collapsed;
+            this.grdBrowser.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void SuspendService()
         {
-            this.grdBrowser.Visibility = Visibility.Collapsed;
+            this.grdBrowser.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void StopService()
@@ -137,8 +135,8 @@ namespace UnifyMe.UIElements.Services
             this.ucWebView.Loaded -= UcWebView_Loaded;
             this.ucWebView.TitleChanged -= UcWebView_TitleChanged;
             this.NumNotifications = null;
-            this.tbMessage.Visibility = Visibility.Collapsed;
-            this.grdBrowser.Visibility = Visibility.Collapsed;
+            this.tbMessage.Visibility = System.Windows.Visibility.Collapsed;
+            this.grdBrowser.Visibility = System.Windows.Visibility.Collapsed;
         }
     }
 }

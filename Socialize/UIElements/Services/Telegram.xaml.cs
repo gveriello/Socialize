@@ -1,11 +1,11 @@
 ﻿using CefSharp.Wpf;
+using System;
+using System.Windows;
+using System.Windows.Controls;
 using UnifyMe.Core.Enums;
 using UnifyMe.Core.Models;
 using UnifyMe.Core.UserPreferences;
 using UnifyMe.Notification;
-using System;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace UnifyMe.UIElements.Services
 {
@@ -80,7 +80,7 @@ namespace UnifyMe.UIElements.Services
             set { SetValue(DescriptionProperty, value); }
         }
         #endregion
-        
+
         private void StartService()
         {
             this.ucWebView = new ChromiumWebBrowser()

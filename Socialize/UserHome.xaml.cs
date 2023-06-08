@@ -1,15 +1,12 @@
-﻿using UnifyMe.Core.Classes;
+﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using UnifyMe.Core.Classes;
 using UnifyMe.Core.Enums;
 using UnifyMe.Core.Events;
 using UnifyMe.Core.Models;
 using UnifyMe.Core.UserPreferences;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace UnifyMe
 {

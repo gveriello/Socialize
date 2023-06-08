@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 
 namespace UnifyMe.Core.Models.Converter
@@ -18,13 +13,13 @@ namespace UnifyMe.Core.Models.Converter
                 valueCasted = false;
             else
                 bool.TryParse(value.ToString(), out valueCasted);
-            return (valueCasted) ? Visibility.Visible : Visibility.Collapsed;
+            return (valueCasted) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Visibility valueBack = (Visibility)value;
-            return (valueBack == Visibility.Visible) ? true : false;
+            System.Windows.Visibility valueBack = (System.Windows.Visibility)value;
+            return (valueBack == System.Windows.Visibility.Visible) ? true : false;
         }
     }
 }

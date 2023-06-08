@@ -5,13 +5,9 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using System.Xml;
-using System.Xml.Linq;
 using UnifyMe.Core.Classes;
 
 namespace UnifyMe.Core.Managers
@@ -72,7 +68,7 @@ namespace UnifyMe.Core.Managers
                     readStream = new StreamReader(receiveStream);
                 else
                     readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-                
+
                 string data = readStream.ReadToEnd();
                 DataSet ds = new DataSet();
                 StringReader reader = new StringReader(data);

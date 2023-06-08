@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using UnifyMe.Core.Classes;
 using UnifyMe.Core.Managers;
 using UnifyMe.Core.Models;
-using Windows.Devices.Geolocation;
 
 namespace UnifyMe.UIElements.Windows
 {
@@ -36,7 +31,7 @@ namespace UnifyMe.UIElements.Windows
 
         private void InitializeModel()
         {
-            this.Model.GeolocatorObject = new Geolocator();
+            //this.Model.GeolocatorObject = new Geolocator();
         }
 
         #region Run
@@ -63,12 +58,12 @@ namespace UnifyMe.UIElements.Windows
 
         private void StopService()
         {
-            grdMain.Visibility = Visibility.Collapsed;
+            grdMain.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private async void StartService()
         {
-            grdMain.Visibility = Visibility.Visible;
+            grdMain.Visibility = System.Windows.Visibility.Visible;
 
             if (this.Model.HasWeatherInfo.Value)
                 return;
@@ -80,7 +75,7 @@ namespace UnifyMe.UIElements.Windows
 
         private async Task GetCurrentPosition()
         {
-            this.Model.gp = await this.Model.GeolocatorObject.GetGeopositionAsync();
+            //this.Model.gp = await this.Model.GeolocatorObject.GetGeopositionAsync();
         }
 
         private void InitializeNews()
@@ -88,11 +83,11 @@ namespace UnifyMe.UIElements.Windows
             if (this.Model.CurrentWeather == null)
                 return;
 
-            pbLoadedWidget.Visibility = Visibility.Visible;
+            pbLoadedWidget.Visibility = System.Windows.Visibility.Visible;
 
             this.Model.NewsSource = RequestManager.GetNews(this.Model.CityName);
 
-            pbLoadedWidget.Visibility = Visibility.Collapsed;
+            pbLoadedWidget.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private async void InitializeWeather()
@@ -100,10 +95,10 @@ namespace UnifyMe.UIElements.Windows
             if (Model.gp == null)
                 return;
 
-            pbLoadedWidget.Visibility = Visibility.Visible;
+            pbLoadedWidget.Visibility = System.Windows.Visibility.Visible;
             this.Model.CurrentWeather = null;
-            Model.CurrentWeather = RequestManager.GetWheather(Model.gp.Coordinate.Point.Position.Longitude, Model.gp.Coordinate.Point.Position.Latitude);
-            pbLoadedWidget.Visibility = Visibility.Collapsed;
+            Model.CurrentWeather = null; //RequestManager.GetWheather(Model.gp.Coordinate.Point.Position.Longitude, Model.gp.Coordinate.Point.Position.Latitude);
+            pbLoadedWidget.Visibility = System.Windows.Visibility.Collapsed;
         }
         #endregion
 

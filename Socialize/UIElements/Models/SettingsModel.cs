@@ -1,6 +1,5 @@
-﻿using UnifyMe.Core.Classes;
-using System;
-using System.ComponentModel;
+﻿using System;
+using UnifyMe.Core.Classes;
 using UnifyMe.Core.Managers;
 
 namespace UnifyMe.Core.Models

@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using UnifyMe.Core.Classes;
-using Windows.Devices.Geolocation;
 
 namespace UnifyMe.Core.Models
 {
-    public class DashboardModel: Model
+    public class DashboardModel : Model
     {
         private BitmapImage _iconWeather;
         private string _cityName;
-        private Geoposition _gp;
+        //private Geoposition _gp;
+        //private Geolocator _geolocatorObject;
+        private object _gp;
+        private object _geolocatorObject;
         private ResponseWeather _currentWeather;
-        private Geolocator _geolocatorObject;
         private string _welcomeMessage;
         private bool _hasWeatherInfo;
         private bool _notHasWheaterInfo;
@@ -76,7 +75,8 @@ namespace UnifyMe.Core.Models
         public bool? HasWeatherInfo
         {
             get { return _hasWeatherInfo; }
-            set {
+            set
+            {
                 _hasWeatherInfo = this.gp != null && this.CurrentWeather != null;
                 this.NotHasWeatherInfo = !_hasWeatherInfo;
                 OnPropertyChanged(nameof(HasWeatherInfo));
@@ -128,7 +128,8 @@ namespace UnifyMe.Core.Models
             }
         }
 
-        public Geoposition gp
+        //public GeoPosition gp
+        public object gp
         {
             get { return this._gp; }
             set
@@ -160,7 +161,8 @@ namespace UnifyMe.Core.Models
             }
         }
 
-        public Geolocator GeolocatorObject
+        //public Geolocator GeolocatorObject
+        public object GeolocatorObject
         {
             get { return this._geolocatorObject; }
             set

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnifyMe.Core.Enums
+﻿namespace UnifyMe.Core.Enums
 {
     public enum ServicesEnums
     {

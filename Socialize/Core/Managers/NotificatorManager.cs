@@ -1,6 +1,6 @@
 ﻿using Notifications.Wpf;
-using UnifyMe.Core.Enums;
 using System;
+using UnifyMe.Core.Enums;
 
 namespace UnifyMe.Notification
 {

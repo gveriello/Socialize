@@ -1,8 +1,6 @@
-﻿using System.ComponentModel;
-
-namespace UnifyMe.Core.Models
+﻿namespace UnifyMe.Core.Models
 {
-    public class ServicesContext: Model
+    public class ServicesContext : Model
     {
         #region Private property
         private string _whatsappNotify;

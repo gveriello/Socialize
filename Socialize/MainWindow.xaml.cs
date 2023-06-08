@@ -1,16 +1,15 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
 using Microsoft.Win32;
+using System;
+using System.IO;
+using System.Windows;
+using System.Windows.Media;
 using UnifyMe.Core.Classes;
 using UnifyMe.Core.Enums;
 using UnifyMe.Core.Events;
 using UnifyMe.Core.Models;
 using UnifyMe.Core.UserPreferences;
-using System;
-using System.IO;
-using System.Windows;
-using System.Windows.Media;
-using Windows.Devices.Geolocation;
 
 namespace UnifyMe
 {
@@ -48,7 +47,7 @@ namespace UnifyMe
             this.Height = this.MinHeight;
             this.rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             this.CheckUserPreferences();
-            
+
             EventsManager.Instance.SubScribe(EventsNameEnums.OnSettingsRefresh, CheckUserPreferences);
             this.grdMain.Children.Add(new UserHome());
             //Geolocator gl = new Geolocator();
@@ -63,14 +62,14 @@ namespace UnifyMe
             ColorInfo ApplicationBackground = PreferencesManager.GetPropertyFromModel<SettingsModel, ColorInfo>(nameof(SettingsModel), "ApplicationBackground", new ColorInfo(color_name: "GreenYellow", color: Colors.GreenYellow));
 
             if (LaunchFullScreen)
-                this.WindowState = WindowState.Maximized;
+                this.WindowState = System.Windows.WindowState.Maximized;
             else
-                this.WindowState = WindowState.Normal;
+                this.WindowState = System.Windows.WindowState.Normal;
 
             if (HideTopBar)
-                this.WindowStyle = WindowStyle.None;
+                this.WindowStyle = System.Windows.WindowStyle.None;
             else
-                this.WindowStyle = WindowStyle.SingleBorderWindow;
+                this.WindowStyle = System.Windows.WindowStyle.SingleBorderWindow;
 
             if (ShowOnWindowsStartup)
                 rk.SetValue("UnifyMe", Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "UnifyMe.exe"));

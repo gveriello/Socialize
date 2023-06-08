@@ -1,6 +1,6 @@
-﻿using UnifyMe.Core.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using UnifyMe.Core.Enums;
 
 namespace UnifyMe.Core.Events
 {
@@ -9,7 +9,7 @@ namespace UnifyMe.Core.Events
         public static EventsManager Instance;
         private IDictionary<EventsNameEnums, IList<Action>> subscribers;
 
-        public  EventsManager()
+        public EventsManager()
         {
             this.subscribers = new Dictionary<EventsNameEnums, IList<Action>>();
             Instance = this;
@@ -30,14 +30,15 @@ namespace UnifyMe.Core.Events
         public void Raise(EventsNameEnums eventName, EventArgs parameters)
         {
             if (this.subscribers.ContainsKey(eventName))
-                foreach(Action callback in this.subscribers[eventName])
+                foreach (Action callback in this.subscribers[eventName])
                     try
                     {
                         if (parameters == EventArgs.Empty)
                             callback.DynamicInvoke();
                         else
                             callback.DynamicInvoke(parameters);
-                    }catch(Exception e)
+                    }
+                    catch (Exception e)
                     {
                         //EMPTY
                     }

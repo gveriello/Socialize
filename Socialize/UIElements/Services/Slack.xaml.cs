@@ -1,8 +1,8 @@
 ﻿using CefSharp.Wpf;
-using UnifyMe.Core.Models;
-using UnifyMe.Core.UserPreferences;
 using System.Windows;
 using System.Windows.Controls;
+using UnifyMe.Core.Models;
+using UnifyMe.Core.UserPreferences;
 
 namespace UnifyMe.UIElements.Services
 {
@@ -61,7 +61,7 @@ namespace UnifyMe.UIElements.Services
             {
                 Address = "https://slack.com/signin"
             };
-            this.tbMessage.Visibility = Visibility.Visible;
+            this.tbMessage.Visibility = System.Windows.Visibility.Visible;
             this.ucWebView.Loaded += this.UcWebView_Loaded;
             this.ucWebView.TitleChanged += this.UcWebView_TitleChanged;
 
@@ -69,7 +69,7 @@ namespace UnifyMe.UIElements.Services
                 this.grdBrowser.Children.Remove(this.ucWebView);
 
             this.grdBrowser.Children.Add(this.ucWebView);
-            this.ucWebView.Visibility = Visibility.Visible;
+            this.ucWebView.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void UcWebView_TitleChanged(object sender, DependencyPropertyChangedEventArgs e)

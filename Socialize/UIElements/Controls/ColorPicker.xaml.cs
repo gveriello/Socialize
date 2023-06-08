@@ -1,11 +1,11 @@
-﻿using UnifyMe.Core.Classes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using UnifyMe.Core.Classes;
 
 namespace UnifyMe.UIElements.Controls
 {
@@ -99,12 +99,13 @@ namespace UnifyMe.UIElements.Controls
         private List<ColorInfo> GetConstants()
         {
             List<ColorInfo> list = new List<ColorInfo>();
-            var color_query = from PropertyInfo property in typeof(Colors).GetProperties() orderby property.Name
-            select new ColorInfo(
-            property.Name,
-            (Color)property.GetValue(null, null));
+            var color_query = from PropertyInfo property in typeof(Colors).GetProperties()
+                              orderby property.Name
+                              select new ColorInfo(
+                              property.Name,
+                              (Color)property.GetValue(null, null));
 
-            foreach(ColorInfo color in color_query)
+            foreach (ColorInfo color in color_query)
                 list.Add(color);
             return list;
         }
